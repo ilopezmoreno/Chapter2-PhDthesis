@@ -43,7 +43,6 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419.dta"
 	zona        	///
 	salario			///
 	seg_soc     	///
-	c_ocu11c    	///
 	ing7c       	///
 	dur9c       	///
 	emple7c     	///
@@ -372,7 +371,100 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419.dta"
 	merge_COE2T318	///
 	merge_COE1T419	///
 	merge_COE2T419	///
-	niv_ins 		//
+	niv_ins 		///
+	p2i				///
+	p2j             ///
+	p2k_anio        ///
+	p2k_mes         ///
+	p2k             ///
+	p3j1            ///
+	p3j2            ///
+	p3k3            ///
+	p3k4            ///
+	p3k5            ///
+	p3k9            ///
+	p3l             ///
+	p5b_hlu         ///
+	p5b_mlu         ///
+	p5b_hma         ///
+	p5b_mma         ///
+	p5b_hmi         ///
+	p5b_mmi         ///
+	p5b_hju         ///
+	p5b_mju         ///
+	p5b_hvi         ///
+	p5b_mvi         ///
+	p5b_hsa         ///
+	p5b_msa         ///
+	p5b_hdo         ///
+	p5b_mdo         ///
+	p5b_thrs        ///
+	p5b_tdia        ///
+	p5c             ///
+	p5d1            ///
+	p5d_hlu         ///
+	p5d_mlu         ///
+	p5d_hma         ///
+	p5d_mma         ///
+	p5d_hmi         ///
+	p5d_mmi         ///
+	p5d_hju         ///
+	p5d_mju         ///
+	p5d_hvi         ///
+	p5d_mvi         ///
+	p5d_hsa         ///
+	p5d_msa         ///
+	p5d_hdo         ///
+	p5d_mdo         ///
+	p5d_thrs        ///
+	p5d_tdia        ///
+	p5e				///
+	p5f1            ///
+	p5f2            ///
+	p5f3            ///
+	p5f4            ///
+	p5f5            ///
+	p5f6            ///
+	p5f7            ///
+	p5f8            ///
+	p5f9            ///
+	p5f10           ///
+	p5f11           ///
+	p5f12			///
+	p5f13           ///
+	p5f14           ///
+	p5f15           ///
+	p5f99           ///
+	p9_1            ///
+	p9_h1           ///
+	p9_m1           ///
+	p9_2            ///
+	p9_h2           ///
+	p9_m2           ///
+	p9_3            ///
+	p9_h3			///
+	p9_m3           ///
+	p9_4            ///
+	p9_h4           ///
+	p9_m4           ///
+	p9_5            ///
+	p9_h5           ///
+	p9_m5           ///
+	p9_6            ///
+	p9_h6           ///
+	p9_m6           ///
+	p9_7            ///
+	p9_h7			///
+	p9_m7           ///
+	p9_8            ///
+	p9_h8           ///
+	p9_m8           ///
+	P3K4            ///
+	P5D_MSA         //
+
+	
+	
+	
 	
 	
 	

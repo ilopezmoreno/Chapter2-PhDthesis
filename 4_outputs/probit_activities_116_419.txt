@@ -1,0 +1,89 @@
+		(1)
+VARIABLES	LABELS	clerical
+		
+1.e_con	Estado conyugal = 1, Free Union	-0.566***
+		(0.0156)
+2.e_con	Estado conyugal = 2, Separated	0.00376
+		(0.0247)
+3.e_con	Estado conyugal = 3, Divorced	0.357***
+		(0.0314)
+4.e_con	Estado conyugal = 4, Widowed	-0.559***
+		(0.0314)
+5.e_con	Estado conyugal = 5, Married	-0.552***
+		(0.0112)
+9.e_con	Estado conyugal = 9, No sabe	-0.0157
+		(0.565)
+1.ent	Entidad = 1, Aguascalientes	-0.225***
+		(0.0274)
+2.ent	Entidad = 2, Baja California	-0.0972***
+		(0.0262)
+3.ent	Entidad = 3, Baja California Sur	0.141***
+		(0.0301)
+4.ent	Entidad = 4, Campeche	-0.223***
+		(0.0274)
+5.ent	Entidad = 5, Coahuila de Zaragoza	-0.214***
+		(0.0269)
+6.ent	Entidad = 6, Colima	-0.0529*
+		(0.0289)
+7.ent	Entidad = 7, Chiapas	-0.754***
+		(0.0284)
+8.ent	Entidad = 8, Chihuahua	-0.175***
+		(0.0282)
+10.ent	Entidad = 10, Durango	-0.304***
+		(0.0264)
+11.ent	Entidad = 11, Guanajuato	-0.386***
+		(0.0287)
+12.ent	Entidad = 12, Guerrero	-0.502***
+		(0.0333)
+13.ent	Entidad = 13, Hidalgo	-0.528***
+		(0.0340)
+14.ent	Entidad = 14, Jalisco	-0.230***
+		(0.0264)
+15.ent	Entidad = 15, México	-0.348***
+		(0.0277)
+16.ent	Entidad = 16, Michoacán de Ocampo	-0.457***
+		(0.0315)
+17.ent	Entidad = 17, Morelos	-0.472***
+		(0.0296)
+18.ent	Entidad = 18, Nayarit	-0.187***
+		(0.0277)
+19.ent	Entidad = 19, Nuevo León	-0.0637**
+		(0.0250)
+20.ent	Entidad = 20, Oaxaca	-0.533***
+		(0.0287)
+21.ent	Entidad = 21, Puebla	-0.570***
+		(0.0286)
+22.ent	Entidad = 22, Querétaro	-0.453***
+		(0.0277)
+23.ent	Entidad = 23, Quintana Roo	0.0655**
+		(0.0275)
+24.ent	Entidad = 24, San Luis Potosí	-0.391***
+		(0.0274)
+25.ent	Entidad = 25, Sinaloa	-0.199***
+		(0.0287)
+26.ent	Entidad = 26, Sonora	-0.0935***
+		(0.0294)
+27.ent	Entidad = 27, Tabasco	-0.439***
+		(0.0294)
+28.ent	Entidad = 28, Tamaulipas	-0.112***
+		(0.0289)
+29.ent	Entidad = 29, Tlaxcala	-0.485***
+		(0.0289)
+30.ent	Entidad = 30, Veracruz de Ignacio de la Llave	-0.627***
+		(0.0346)
+31.ent	Entidad = 31, Yucatán	-0.164***
+		(0.0275)
+32.ent	Entidad = 32, Zacatecas	-0.441***
+		(0.0292)
+2.per	Período de levantamiento = 2, 2	0.00714
+		(0.0136)
+3.per	Período de levantamiento = 3, 3	0.0284**
+		(0.0138)
+4.per	Período de levantamiento = 4, 4	0.0623***
+		(0.0136)
+Constant	Constant	-0.630***
+		(0.0218)
+		
+Observations		284,682
+Robust standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		

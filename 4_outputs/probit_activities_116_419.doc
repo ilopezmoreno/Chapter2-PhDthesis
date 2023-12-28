@@ -1,0 +1,97 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx6624\clbrdrt\brdrs\cellx8208
+\ql \cell\qc (1)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx6624\cellx8208
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx6624\clbrdrb\brdrs\cellx8208
+\ql VARIABLES\cell\qc clerical\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx6624\cellx8208
+\ql \cell\qc \cell\row
+\ql Estado conyugal = 1, Free Union\cell\qc -0.566***\cell\row
+\ql \cell\qc (0.0156)\cell\row
+\ql Estado conyugal = 2, Separated\cell\qc 0.00376\cell\row
+\ql \cell\qc (0.0247)\cell\row
+\ql Estado conyugal = 3, Divorced\cell\qc 0.357***\cell\row
+\ql \cell\qc (0.0314)\cell\row
+\ql Estado conyugal = 4, Widowed\cell\qc -0.559***\cell\row
+\ql \cell\qc (0.0314)\cell\row
+\ql Estado conyugal = 5, Married\cell\qc -0.552***\cell\row
+\ql \cell\qc (0.0112)\cell\row
+\ql Estado conyugal = 9, No sabe\cell\qc -0.0157\cell\row
+\ql \cell\qc (0.565)\cell\row
+\ql Entidad = 1, Aguascalientes\cell\qc -0.225***\cell\row
+\ql \cell\qc (0.0274)\cell\row
+\ql Entidad = 2, Baja California\cell\qc -0.0972***\cell\row
+\ql \cell\qc (0.0262)\cell\row
+\ql Entidad = 3, Baja California Sur\cell\qc 0.141***\cell\row
+\ql \cell\qc (0.0301)\cell\row
+\ql Entidad = 4, Campeche\cell\qc -0.223***\cell\row
+\ql \cell\qc (0.0274)\cell\row
+\ql Entidad = 5, Coahuila de Zaragoza\cell\qc -0.214***\cell\row
+\ql \cell\qc (0.0269)\cell\row
+\ql Entidad = 6, Colima\cell\qc -0.0529*\cell\row
+\ql \cell\qc (0.0289)\cell\row
+\ql Entidad = 7, Chiapas\cell\qc -0.754***\cell\row
+\ql \cell\qc (0.0284)\cell\row
+\ql Entidad = 8, Chihuahua\cell\qc -0.175***\cell\row
+\ql \cell\qc (0.0282)\cell\row
+\ql Entidad = 10, Durango\cell\qc -0.304***\cell\row
+\ql \cell\qc (0.0264)\cell\row
+\ql Entidad = 11, Guanajuato\cell\qc -0.386***\cell\row
+\ql \cell\qc (0.0287)\cell\row
+\ql Entidad = 12, Guerrero\cell\qc -0.502***\cell\row
+\ql \cell\qc (0.0333)\cell\row
+\ql Entidad = 13, Hidalgo\cell\qc -0.528***\cell\row
+\ql \cell\qc (0.0340)\cell\row
+\ql Entidad = 14, Jalisco\cell\qc -0.230***\cell\row
+\ql \cell\qc (0.0264)\cell\row
+\ql Entidad = 15, México\cell\qc -0.348***\cell\row
+\ql \cell\qc (0.0277)\cell\row
+\ql Entidad = 16, Michoacán de Ocampo\cell\qc -0.457***\cell\row
+\ql \cell\qc (0.0315)\cell\row
+\ql Entidad = 17, Morelos\cell\qc -0.472***\cell\row
+\ql \cell\qc (0.0296)\cell\row
+\ql Entidad = 18, Nayarit\cell\qc -0.187***\cell\row
+\ql \cell\qc (0.0277)\cell\row
+\ql Entidad = 19, Nuevo León\cell\qc -0.0637**\cell\row
+\ql \cell\qc (0.0250)\cell\row
+\ql Entidad = 20, Oaxaca\cell\qc -0.533***\cell\row
+\ql \cell\qc (0.0287)\cell\row
+\ql Entidad = 21, Puebla\cell\qc -0.570***\cell\row
+\ql \cell\qc (0.0286)\cell\row
+\ql Entidad = 22, Querétaro\cell\qc -0.453***\cell\row
+\ql \cell\qc (0.0277)\cell\row
+\ql Entidad = 23, Quintana Roo\cell\qc 0.0655**\cell\row
+\ql \cell\qc (0.0275)\cell\row
+\ql Entidad = 24, San Luis Potosí\cell\qc -0.391***\cell\row
+\ql \cell\qc (0.0274)\cell\row
+\ql Entidad = 25, Sinaloa\cell\qc -0.199***\cell\row
+\ql \cell\qc (0.0287)\cell\row
+\ql Entidad = 26, Sonora\cell\qc -0.0935***\cell\row
+\ql \cell\qc (0.0294)\cell\row
+\ql Entidad = 27, Tabasco\cell\qc -0.439***\cell\row
+\ql \cell\qc (0.0294)\cell\row
+\ql Entidad = 28, Tamaulipas\cell\qc -0.112***\cell\row
+\ql \cell\qc (0.0289)\cell\row
+\ql Entidad = 29, Tlaxcala\cell\qc -0.485***\cell\row
+\ql \cell\qc (0.0289)\cell\row
+\ql Entidad = 30, Veracruz de Ignacio de la Llave\cell\qc -0.627***\cell\row
+\ql \cell\qc (0.0346)\cell\row
+\ql Entidad = 31, Yucatán\cell\qc -0.164***\cell\row
+\ql \cell\qc (0.0275)\cell\row
+\ql Entidad = 32, Zacatecas\cell\qc -0.441***\cell\row
+\ql \cell\qc (0.0292)\cell\row
+\ql Período de levantamiento = 2, 2\cell\qc 0.00714\cell\row
+\ql \cell\qc (0.0136)\cell\row
+\ql Período de levantamiento = 3, 3\cell\qc 0.0284**\cell\row
+\ql \cell\qc (0.0138)\cell\row
+\ql Período de levantamiento = 4, 4\cell\qc 0.0623***\cell\row
+\ql \cell\qc (0.0136)\cell\row
+\ql Constant\cell\qc -0.630***\cell\row
+\ql \cell\qc (0.0218)\cell\row
+\ql \cell\qc \cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx6624\clbrdrb\brdrs\cellx8208
+\ql Observations\cell\qc 284,682\cell\row
+\pard\qc
+Robust standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}
