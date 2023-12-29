@@ -14,12 +14,13 @@
 
 	
 	// Installing required settings and packages
-		ssc install stata_linter
-		ssc install fre
-		ssc install mdesc
-		ssc isntall bcstats
-		ssc install iefieldkit
-		ssc install ietoolkit
+		
+		*ssc install stata_linter
+		*ssc install fre
+		*ssc install mdesc
+		*ssc isntall bcstats
+		*ssc install iefieldkit
+		*ssc install ietoolkit
 
 		
 		clear
@@ -35,46 +36,13 @@
 		capture mkdir 3_documentation
 		capture mkdir 4_outputs
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		cd "${root}/4_outputs"
+		capture mkdir descriptive_statistics
+		capture mkdir figures
+		capture mkdir regression_results
+		capture mkdir margins_results
+		capture mkdir margins_plots
+		capture mkdir tables
 		
 		
 		

@@ -3,6 +3,42 @@ global root "C:/Users/d57917il/Documents/GitHub/Chapter2-PhDthesis"
 
 use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419.dta" 
 
+destring t_loc, replace
+
+
+/*
+
+describe t_loc
+summarize t_loc
+destring t_loc, replace 
+describe t_loc
+recast int t_loc, force
+describe t_loc
+
+label define t_loc 1 "More than 100,000", modify
+label define t_loc 2 "Between 15,000 and 99,999", modify
+label define t_loc 3 "Between 2,500 and 14,999", modify
+label define t_loc 4 "Less than 2,500", modify
+
+label drop t_loc
+label define t_loc /// 
+1 "More than 100,000" ///
+2 "Between 15,000 and 99,999" ///
+3 "Between 2,500 and 14,999" ///
+4 "Less than 2,500" //
+
+fre t_loc
+
+
+*/
+
+
+
+
+
+
+
+
 
 
 /* 	Although iecodebook offers the option to drop variable, the current dataset has 

@@ -37,7 +37,7 @@ use	"${root}/2_data-storage/pool_dataset/tidy-pool-data_116-419.dta"
 	the iecodebook.xlsx that I already did. 
 */
 		// De-activated for reproducibility purposes. 
-		   iecodebook template using "${root}/iecodebook_chapter2.xlsx", replace 
+		  *iecodebook template using "${root}/iecodebook_chapter2.xlsx", replace 
 		// De-activated for reproducibility purposes. 
 		
 		
@@ -55,6 +55,4 @@ iecodebook apply using "${root}/iecodebook_chapter2.xlsx", replace // This is th
 	
 	
 	
-	
-	
-	
+save "${root}/2_data-storage/pool_dataset/enoe_tidydata_116-419.dta" 	

@@ -3,11 +3,6 @@ global root "C:/Users/d57917il/Documents/GitHub/Chapter2-PhDthesis"
 
 use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-tidy.dta" 
 
-
-destring t_loc 
-
-
-
 ***************************************
 ***** Data Transformation Process *****
 ***************************************
@@ -80,6 +75,7 @@ destring t_loc
 			label value num_kids num_kids
 			tab num_kids
 			tab n_hij num_kids // Data quality Check: Variable was created correctly
+			drop n_hij
 			
 			
 			// Level of education
@@ -103,8 +99,8 @@ destring t_loc
 			4 "Technical Career" /// 
 			5 "Graduate or post-graduate"
 			label value educ educ
-			tab educ
-			
+			tab educ cs_p13_1
+			drop cs_p13_1
 			
 			// Socio-economic stratum
 			generate soc_str=.
@@ -117,7 +113,7 @@ destring t_loc
 			label value soc_str soc_str 
 			tab soc_str [fweight=fac]
 			fre soc_str
-			
+			drop est
 			
 			// Working ages (Between 18 and 65)
 			generate working_age=. 
