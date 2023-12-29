@@ -22,7 +22,7 @@ clerical 		// WHITE-COLLAR
 
 foreach dependent_variable of local dep_variable {	
 
-cd "${root}/4_outputs/regression_results/probit_activities"
+cd "${root}/4_outputs/regression_results/probit_service_activities"
 
 // Without control variables 
 probit `dependent_variable' ///   
@@ -32,9 +32,9 @@ ib(1).per /// Year fixed effects to control for unobserved heterogeneity across 
 if female==1 & working_age==2 /// Regression restricted only to working_age women in the sample. 
 [pweight=fac], /// Probability weights 
 vce (robust) // Robust standard errors. 
-outreg2 using 	nocontrol_probit_serv_activities_116_419.xls, label dec(4)
-outreg2 using 	nocontrol_probit_serv_activities_116_419.doc, label // Save regression results in word format
-estimates save 	nocontrol_probit_serv_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
+outreg2 using nocontrol_probit_serv_activities_116_419.xls, label dec(4)
+outreg2 using nocontrol_probit_serv_activities_116_419.doc, label // Save regression results in word format
+estimates save nocontrol_probit_serv_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
 
 
 
@@ -52,9 +52,9 @@ ib(1).per /// Year fixed effects to control for unobserved heterogeneity across 
 if female==1 & working_age==2 /// Regression restricted only to working_age women in the sample. 
 [pweight=fac], /// Probability weights 
 vce (robust) // Robust standard errors. 
-outreg2 using 	control_probit_serv_activities_116_419.xls, label dec(4)
-outreg2 using 	control_probit_serv_activities_116_419.doc, label // Save regression results in word format
-estimates save 	control_probit_serv_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
+outreg2 using control_probit_serv_activities_116_419.xls, label dec(4)
+outreg2 using control_probit_serv_activities_116_419.doc, label // Save regression results in word format
+estimates save control_probit_serv_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
 
 
 
@@ -72,8 +72,8 @@ ib(1).per /// Year fixed effects to control for unobserved heterogeneity across 
 if female==1 & working_age==2 /// Regression restricted only to working_age women in the sample. 
 [pweight=fac], /// Probability weights 
 vce (robust) // Robust standard errors. 
-outreg2 using 	interaction_probit_serv_activities_116_419.xls, label dec(4)
-outreg2 using 	interaction_probit_serv_activities_116_419.doc, label // Save regression results in word format
-estimates save 	interaction_probit_serv_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
+outreg2 using interaction_probit_serv_activities_116_419.xls, label dec(4)
+outreg2 using interaction_probit_serv_activities_116_419.doc, label // Save regression results in word format
+estimates save interaction_probit_serv_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
 
 }

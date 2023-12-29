@@ -21,7 +21,7 @@ construction 	// INDUSTRY
 
 foreach dependent_variable of local dep_variable {	
 
-cd "${root}/4_outputs/regression_results/probit_activities"
+cd "${root}/4_outputs/regression_results/probit_industry_activities"
 
 // Without control variables 
 probit `dependent_variable' ///   
@@ -34,7 +34,6 @@ vce (robust) // Robust standard errors.
 outreg2 using 	nocontrol_probit_ind_activities_116_419.xls, label dec(4)
 outreg2 using 	nocontrol_probit_ind_activities_116_419.doc, label // Save regression results in word format
 estimates save 	nocontrol_probit_ind_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
-
 
 
 // With control variables 
