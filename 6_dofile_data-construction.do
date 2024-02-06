@@ -1,7 +1,7 @@
 clear 
 global root "C:/Users/d57917il/Documents/GitHub/Chapter2-PhDthesis"
 
-use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-tidy.dta" 
+use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta" 
 
 ***************************************
 ***** Data Transformation Process *****
@@ -163,8 +163,21 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-tidy.dta"
 			replace work_fem_serv=1 if female==1 & working_age==2 & clase2==1 & P4A_Sector==3 
 			replace work_fem_serv=2 if female==1 & working_age==2 & clase2==1 & P4A_Sector!=3 
 
+			// Dummy variable to identify informal jobs
+			generate informal_jobs=.
+			replace  informal_jobs=1 if emp_ppal==1 // Informal job 
+			replace  informal_jobs=0 if emp_ppal==2 // Formal job 
+			label variable informal_jobs "Informal jobs identificator" 
+			label define informal_jobs 1 "Informal job" 2 "Formal job", replace
+			label value informal_jobs informal_jobs			
 			
-
+			// Dummy variable to identify the informal sector
+			generate informal_sector=.
+			replace  informal_sector=1 if tue_ppal==1 // Informal job 
+			replace  informal_sector=0 if tue_ppal==2 // Formal job 
+			label variable informal_sector "Informal sector identificator" 
+			label define informal_sector 1 "Informal sector" 2 "Outside informal sector", replace
+			label value informal_sector informal_jobs					
 			
 			
 			// Generating variables to identify specific activities within the industrial and service sector 
@@ -213,7 +226,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-tidy.dta"
 
 			
 
-save	"${root}/2_data-storage/pool_dataset/tidy-pool-data_116-419.dta", replace  	
+save	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta", replace  	
 			
 			
 			

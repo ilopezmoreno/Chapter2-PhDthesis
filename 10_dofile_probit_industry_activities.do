@@ -1,7 +1,7 @@
 clear 
 global root "C:/Users/d57917il/Documents/GitHub/Chapter2-PhDthesis"
 
-use	"${root}/2_data-storage/pool_dataset/enoe_tidydata_116-419.dta" 
+use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-iecodebook.dta" 
 
 
 cd "${root}/4_outputs/regression_results"

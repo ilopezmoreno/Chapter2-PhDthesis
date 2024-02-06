@@ -25,7 +25,7 @@ https://www.youtube.com/watch?v=zm6eoMU09dA&t=1174s
 
 */
 
-use	"${root}/2_data-storage/pool_dataset/tidy-pool-data_116-419.dta" 
+use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta" 
 
 
 /* 	The following line of code is used to generate the excel file "iecodebook"
@@ -49,10 +49,11 @@ use	"${root}/2_data-storage/pool_dataset/tidy-pool-data_116-419.dta"
 	
 	
 	
-	
 iecodebook apply using "${root}/iecodebook_chapter2.xlsx", replace // This is the code that asks stata to apply my iecodebook to my dataset.	
 	
 	
 	
 	
-save "${root}/2_data-storage/pool_dataset/enoe_tidydata_116-419.dta" 	
+save "${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-iecodebook.dta" 	
+
+

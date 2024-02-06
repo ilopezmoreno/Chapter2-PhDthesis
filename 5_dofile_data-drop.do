@@ -78,10 +78,7 @@ fre t_loc
 	cs_nr_ori   	///
 	zona        	///
 	salario			///
-	seg_soc     	///
 	ing7c       	///
-	dur9c       	///
-	emple7c     	///
 	medica5c    	///
 	buscar5c    	///
 	dur_est			///
@@ -108,7 +105,6 @@ fre t_loc
 	eda19c      	///
 	domestico   	///
 	anios_esc   	///
-	hrsocup			///
 	ing_x_hrs   	///
 	tpg_p8a     	///
 	tcco        	///
@@ -117,10 +113,8 @@ fre t_loc
 	ma48me1sm   	///
 	p14apoyos   	///
 	t_tra			///
-	tue_ppal    	///
 	trans_ppal  	///
 	mh_fil2     	///
-	mh_col      	///
 	sec_ins     	///
 	n_inf       	///
 	p1          	///
@@ -519,4 +513,4 @@ fre t_loc
         strLs     to   str#s  				*/
 
 
-save "${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-tidy.dta", replace	
+save "${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta", replace	
