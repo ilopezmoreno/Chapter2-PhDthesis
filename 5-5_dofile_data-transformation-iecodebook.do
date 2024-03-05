@@ -37,7 +37,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta"
 	the iecodebook.xlsx that I already did. 
 */
 		// De-activated for reproducibility purposes. 
-		  *iecodebook template using "${root}/iecodebook_chapter2.xlsx", replace 
+		* iecodebook template using "${root}/iecodebook_chapter2_v2.xlsx", replace 
 		// De-activated for reproducibility purposes. 
 		
 		
@@ -49,11 +49,11 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta"
 	
 	
 	
-iecodebook apply using "${root}/iecodebook_chapter2.xlsx", replace // This is the code that asks stata to apply my iecodebook to my dataset.	
+iecodebook apply using "${root}/iecodebook_chapter2_v2.xlsx", replace // This is the code that asks stata to apply my iecodebook to my dataset.	
 	
 	
 	
 	
-save "${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-iecodebook.dta" 	
+save "${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-iecodebook.dta", replace 	
 
 

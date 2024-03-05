@@ -9,8 +9,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 
 /*
 
-// RECODING VARIABLES
-			recode ur (2=0) // Rural/Urban identificator - 2 was Rural, now 0 is rural 
+
 
 
 // MISSING VALUE DECISIONS 
@@ -47,7 +46,198 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 
 // GENERATE NEW VARIABLES
 
-			// Generate dummy variables to identify males and females.
+	// Generate SCIAN categories, differentiating options within "Other services"
+			clonevar scian_1 = scian
+			fre scian_1
+			fre p4a if scian==19 [fweight=fac]
+			replace scian_1=22 if p4a==8111 // Servicios de reparación y mantenimiento de automóviles y camiones
+			replace scian_1=23 if p4a==8112 // Servicios de reparación y mantenimiento de equipo, maquinaria, artículos para el hogar y personales
+			replace scian_1=24 if p4a==8121 // Servicios personales
+			replace scian_1=25 if p4a==8130 // Asociaciones y organizaciones
+			replace scian_1=26 if p4a==8140 // Hogares con empleados domésticos
+			recode scian_1 (0=.d) 			// Replacing 0 "Doesn't apply" to ".d"
+			// List of codes for P4A variable available in the following INEGI website: 
+			// https://www.inegi.org.mx/contenidos/programas/enoe/15ymas/doc/clasificaciones_enoe.pdf
+			
+			label define scian_1 									///
+			1   "Agricultural activities" 							///
+			2   "Mining"											///
+			3	"Supply of electricity, water or gas"				///
+			4	"Construction"										///
+			5	"Manufacturing"                                 	///
+			6	"Wholesale trade"									///
+			7	"Retail trade"                                  	///
+			8	"Transportation (Air, water, railway, etc)"     	///
+			9	"Media services"									///			
+			10	"Finance and insurance"                             ///
+			11	"Real estate"                                       ///
+			12	"Scientists, professionals and technical services"  ///
+			13	"Corporate services"                                ///
+			14	"Business support"                                  ///
+			15	"Education services"                                ///
+			16	"Health and social assistance"                      ///
+			17	"Culture, sports, leisure"                          ///
+			18	"Temporary accommodation, food and beverage"		///
+			19	"Other services"                                    ///
+			20	"Government"                                        ///
+			21	"Unspecified service activities"                    ///
+			22	"Repair and maintenance (Car and truck)"            ///
+			23	"Repair and maintenance (Machinery and equipment)"  ///
+			24	"Personal services"                                 ///
+			25	"Associations and organizations"                    ///
+			26	"Domestic employees"                                //
+			label value scian_1 scian_1
+			fre scian_1 [fweight=fac]
+			tab scian_1 [fweight=fac]
+
+			
+// Generate variable to identify specific economic activities within the manufacturing sector. 
+tab p4a if scian==5 // 5 = Manufacturing	
+	
+/* P4A code |      Freq.     Percent        Cum.
+------------+-----------------------------------
+       3110 |     23,004       20.41       20.41
+       3120 |      3,674        3.26       23.67
+       3130 |      1,488        1.32       25.00
+       3140 |      3,192        2.83       27.83
+       3150 |      8,868        7.87       35.70
+       3160 |      5,507        4.89       40.58
+       3210 |      1,815        1.61       42.20
+       3220 |      2,017        1.79       43.99
+       3230 |      1,933        1.72       45.70
+       3240 |        619        0.55       46.25
+       3250 |      3,015        2.68       48.93
+       3260 |      4,860        4.31       53.24
+       3270 |      4,925        4.37       57.61
+       3310 |      1,483        1.32       58.92
+       3320 |      9,043        8.02       66.95
+       3330 |      1,707        1.51       68.46
+       3340 |      3,502        3.11       71.57
+       3350 |      3,033        2.69       74.26
+       3360 |     19,027       16.88       91.15
+       3370 |      5,647        5.01       96.16
+       3380 |      4,224        3.75       99.91
+       3399 |        103        0.09      100.00
+------------+-----------------------------------
+      Total |    112,686      100.00           */
+			
+/*
+31-33 Industrias manufactureras
+3110 Industria alimentaria
+3120 Industria de las bebidas y del tabaco
+3130 Fabricación de insumos textiles y acabado de textiles
+3140 Fabricación de productos textiles, excepto prendas de vestir
+3150 Fabricación de prendas de vestir
+3160 Curtido y acabado de cuero y piel, y fabricación de productos de cuero, piel y materiales sucedáneos
+3210 Industria de la madera
+3220 Industria del papel
+3230 Impresión e industrias conexas
+3240 Fabricación de productos derivados del petróleo y del carbón
+3250 Industria química
+3260 Industria del plástico y del hule
+3270 Fabricación de productos a base de minerales no metálicos
+3310 Industrias metálicas básicas
+3320 Fabricación de productos metálicos
+3330 Fabricación de maquinaria y equipo
+3340 Fabricación de equipo de computación, comunicación, medición y de otros equipos, componentes y accesorios electrónicos
+3350 Fabricación de accesorios, aparatos eléctricos y equipo de generación de energía eléctrica
+3360 Fabricación de equipo de transporte y partes para vehículos automotores
+3370 Fabricación de muebles, colchones y persianas
+3380 Otras industrias manufactureras
+3399 Descripciones insuficientemente especificadas de subsector de actividad del sector
+Source: https://www.inegi.org.mx/contenidos/programas/enoe/15ymas/doc/clasificaciones_enoe.pdf
+*/
+			
+	generate manufacture_cat=.		
+	replace  manufacture_cat=1	if p4a==3110 // Industria alimentaria 
+	replace  manufacture_cat=2	if p4a==3120 // Industria de las bebidas y del tabaco 
+	replace  manufacture_cat=3	if p4a==3130 // Fabricación de insumos textiles y acabado de textiles 
+	replace  manufacture_cat=4	if p4a==3140 // Fabricación de productos textiles, excepto prendas de vestir 
+	replace  manufacture_cat=5	if p4a==3150 // Fabricación de prendas de vestir 
+	replace  manufacture_cat=6	if p4a==3160 // Curtido y acabado de cuero y piel, y fabricación de productos de cuero, piel y materiales sucedáneos 
+	replace  manufacture_cat=7	if p4a==3210 // Industria de la madera
+	replace  manufacture_cat=8	if p4a==3220 // Industria del papel
+	replace  manufacture_cat=9	if p4a==3230 // Impresión e industrias conexas
+	replace  manufacture_cat=10	if p4a==3240 // Fabricación de productos derivados del petróleo y del carbón
+	replace  manufacture_cat=11	if p4a==3250 // Industria química
+	replace  manufacture_cat=12	if p4a==3260 // Industria del plástico y del hule
+	replace  manufacture_cat=13	if p4a==3270 // Fabricación de productos a base de minerales no metálicos
+	replace  manufacture_cat=14	if p4a==3310 // Industrias metálicas básicas
+	replace  manufacture_cat=15	if p4a==3320 // Fabricación de productos metálicos
+	replace  manufacture_cat=16	if p4a==3330 // Fabricación de maquinaria y equipo
+	replace  manufacture_cat=17	if p4a==3340 // Fabricación de equipo de computación, comunicación, medición y de otros equipos, componentes y accesorios electrónicos
+	replace  manufacture_cat=18	if p4a==3350 // Fabricación de accesorios, aparatos eléctricos y equipo de generación de energía eléctrica
+	replace  manufacture_cat=19	if p4a==3360 // Fabricación de equipo de transporte y partes para vehículos automotores
+	replace  manufacture_cat=20	if p4a==3370 // Fabricación de muebles, colchones y persianas
+	replace  manufacture_cat=21	if p4a==3399 // Descripciones insuficientemente especificadas de subsector de actividad del sector
+
+			 label define manufacture_cat						///
+			 1  "Food industry" 								///
+			 2  "Beverage and tobacco industry"					///
+			 3	"Textile Inputs"								///
+			 4	"Textile products, except clothing"				///
+			 5	"Clothing "                                 	///
+			 6	"Leather goods manufacturing"					///
+			 7	"Wood industry"                             	///
+			 8	"Paper industry"     							///
+			 9	"Printing and related industries"				///			
+			 10	"Petroleum and coal products"  					///
+			 11	"Chemical industry"                        		///
+			 12	"Plastic and rubber industry"  					///
+			 13	"Non-metallic mineral products" 				///
+			 14	"Basic metal industries" 						///
+			 15	"Metal products manufacturing" 					///
+			 16	"Machinery and equipment manufacturing" 		///
+			 17	"Computers and other electronic components" 	///
+			 18	"Electric appliances and accessories" 			///
+			 19	"Autoparts and transportation equipment" 		///
+			 20	"Furniture, mattresses, and blinds" 			///
+			 21	"Unspecified manufacturing activities" 			//
+			
+			 label value manufacture_cat manufacture_cat
+			 fre manufacture_cat [fweight=fac]
+			 tab manufacture_cat [fweight=fac]
+			
+			
+// 	Generate variables to identify industrial activities and differentiate manufacturing industries. 
+	clonevar ind_manufacture_cat = manufacture_cat
+			
+			replace  ind_manufacture_cat=22 if scian==2  // Mining
+			replace  ind_manufacture_cat=23 if scian==3  // Electricity, gas and water supply
+			replace  ind_manufacture_cat=24 if scian==4  // Construction
+			 
+			label define ind_manufacture_cat					///
+			1   "Food industry" 								///
+			2   "Beverage and tobacco industry"					///
+			3	"Textile Inputs"								///
+			4	"Textile products, except clothing"				///
+			5	"Clothing "                                 	///
+			6	"Leather goods manufacturing"					///
+			7	"Wood industry"                             	///
+			8	"Paper industry"     							///
+			9	"Printing and related industries"				///			
+			10	"Petroleum and coal products"  					///
+			11	"Chemical industry"                        		///
+			12	"Plastic and rubber industry"  					///
+			13	"Non-metallic mineral products" 				///
+			14	"Basic metal industries" 						///
+			15	"Metal products manufacturing" 					///
+			16	"Machinery and equipment manufacturing" 		///
+			17	"Computers and other electronic components" 	///
+			18	"Electric appliances and accessories" 			///
+			19	"Autoparts and transportation equipment" 		///
+			20	"Furniture, mattresses, and blinds" 			///
+			21	"Unspecified manufacturing activities" 			///
+			22	"Mining"										///
+			23  "Electricity, gas and water supply"				///
+			24  "Construction"									//
+				
+			label value ind_manufacture_cat ind_manufacture_cat
+			fre ind_manufacture_cat [fweight=fac]
+			tab ind_manufacture_cat [fweight=fac]			
+			
+			
+// Generate dummy variables to identify males and females.
 			gen female=.
 			replace female=1 if sex==2
 			replace female=0 if sex==1
@@ -56,7 +246,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 			label value female female
 			drop sex
 			
-			// Number of sons or daughters
+// Number of sons or daughters
 			generate num_kids=.
 			replace num_kids=0 if n_hij==0 
 			replace num_kids=1 if n_hij==1
@@ -78,7 +268,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 			drop n_hij
 			
 			
-			// Level of education
+// Level of education
 			generate educ=.
 			replace educ=0 if cs_p13_1==0 // No studies at all
 			replace educ=0 if cs_p13_1==1 // Pre-School
@@ -102,7 +292,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 			tab educ cs_p13_1
 			drop cs_p13_1
 			
-			// Socio-economic stratum
+// Socio-economic stratum
 			generate soc_str=.
 			replace soc_str=1 if est==10 
 			replace soc_str=2 if est==20 
@@ -115,7 +305,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 			fre soc_str
 			drop est
 			
-			// Working ages (Between 18 and 65)
+// Working ages (Between 18 and 65)
 			generate working_age=. 
 			replace working_age=1 if eda<=17 
 			replace working_age=2 if eda>17 & eda<66
@@ -126,7 +316,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 			tab eda working_age // Data quality Check: Variable was created correctly
 			
 			
-			// Categorical variable to identify people workin in the primary, secondary or terciary sector. 
+// Categorical variable to identify people workin in the primary, secondary or terciary sector. 
 			generate P4A_Sector=.
 			rename p4a P4A 
 			replace P4A_Sector=1 if P4A>=1100 & P4A<=1199 
@@ -145,25 +335,25 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 			tab P4A_Sector // Data quality check. Result: 0 missing values
 			
 			
-			// Dummy variable to identify working-age women working in the agricultural sector.
+// Dummy variable to identify working-age women working in the agricultural sector.
 			generate work_fem_agri=.
 			replace work_fem_agri=0 if female==1 & working_age==2 & clase2!=1 
 			replace work_fem_agri=1 if female==1 & working_age==2 & clase2==1 & P4A_Sector==1 
 			replace work_fem_agri=2 if female==1 & working_age==2 & clase2==1 & P4A_Sector!=1
 			
-			// Dummy variable to identify working-age women working in the industrial sector.
+// Dummy variable to identify working-age women working in the industrial sector.
 			generate work_fem_ind=.
 			replace work_fem_ind=0 if female==1 & working_age==2 & clase2!=1 
 			replace work_fem_ind=1 if female==1 & working_age==2 & clase2==1 & P4A_Sector==2 
 			replace work_fem_ind=2 if female==1 & working_age==2 & clase2==1 & P4A_Sector!=2 
 			
-			// Dummy variable to identify working-age women working in the service sector.
+// Dummy variable to identify working-age women working in the service sector.
 			generate work_fem_serv=.
 			replace work_fem_serv=0 if female==1 & working_age==2 & clase2!=1 
 			replace work_fem_serv=1 if female==1 & working_age==2 & clase2==1 & P4A_Sector==3 
 			replace work_fem_serv=2 if female==1 & working_age==2 & clase2==1 & P4A_Sector!=3 
 
-			// Dummy variable to identify informal jobs
+// Dummy variable to identify informal jobs
 			generate informal_jobs=.
 			replace  informal_jobs=1 if emp_ppal==1 // Informal job 
 			replace  informal_jobs=0 if emp_ppal==2 // Formal job 
@@ -171,68 +361,100 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 			label define informal_jobs 1 "Informal job" 2 "Formal job", replace
 			label value informal_jobs informal_jobs			
 			
-			// Dummy variable to identify the informal sector
+// Dummy variable to identify the informal sector
 			generate informal_sector=.
 			replace  informal_sector=1 if tue_ppal==1 // Informal job 
 			replace  informal_sector=0 if tue_ppal==2 // Formal job 
 			label variable informal_sector "Informal sector identificator" 
 			label define informal_sector 1 "Informal sector" 2 "Outside informal sector", replace
-			label value informal_sector informal_jobs					
+			label value informal_sector informal_jobs
 			
-			
-			// Generating variables to identify specific activities within the industrial and service sector 
+// Generate a categorical variable that captures if the invidividual is not working, as well as in which sector are they working (in case they are)
+			generate work_p4asector=.
+			replace work_p4asector=0 if clase2!=1 // This will identify people that are not working.
+			replace work_p4asector=1 if P4A_Sector==1 
+			replace work_p4asector=2 if P4A_Sector==2
+			replace work_p4asector=3 if P4A_Sector==3
+			replace work_p4asector=4 if P4A_Sector==4
+			label var work_p4asector "Working Categories"
+			label define work_p4asector 0 "Not Working" 1 "Working in Agriculture" 2 "Working in Industry" 3 "Working in Services" 4 "Working in unspecified activities"
+			label value work_p4asector work_p4asector
+			tab work_p4asector // Data quality Check: 341,402 total observations. Variable was created correctly.
+
+						
+// Generating variables to identify specific activities within the industrial and service sector 
 
 			local new_variables ///
-			food ///
-			autoparts ///
-			clothing ///
-			textile /// 
-			computers ///
-			appliances ///
-			construction ///
-			real_estate ///
-			retail ///
-			media ///
-			finance ///
-			corporative ///
-			education ///
-			health ///
-			hotel_rest ///
-			government ///
-			clerical //
+			industry 			///
+			food 				///
+			autoparts 			///
+			clothing 			///
+			textile 			/// 
+			computers 			///
+			appliances 			///
+			construction 		///
+			real_estate 		///
+			retail 				///
+			media 				///
+			finance 			///
+			corporative 		///
+			education 			///
+			health 				///
+			hotel_rest 			///
+			government 			///
+			clerical 			///
+			domestic_emp 		//
 
 			foreach new_var of local new_variables {
 			generate `new_var'=. 
 			replace `new_var'=0 if clase2!=1 // takes value of 0 if they are not working 	
 			}			
 			
-			replace food=1 			if P4A==3110 	// 3110 Industria alimentaria 	 			
-			replace autoparts=1 	if P4A==3360 	// 3360 Fabricar equipo de transporte y autopartes	 		
-			replace clothing=1 		if P4A==3150 	// 3150 Fabricar prendas de vestir 			 
-			replace textile=1 		if P4A==3140 	// 3140 Fabricar productos textiles, excepto prendas de vestir			 
-			replace computers=1 	if P4A==3340 	// 3340 Fabricar equipo de computo, componentes y accesorios electrónicos		 
-			replace appliances=1 	if P4A==3350 	// 3350 Fabricar aparatos eléctricos, equipo para generación de energía eléctrica, accesorios 			 
-			replace construction=1 	if scian==4 	// Construction			 
-			replace real_estate=1 	if scian==11 	// Servicios inmobiliarios y de alquiler de bienes 	
-			replace retail=1 		if scian==7 	// Comercio al por menor		 
-			replace media=1 		if scian==9 	// Información en medios masivos		 
-			replace finance=1 		if scian==10	// Servicios financieros y de seguros			 
-			replace corporative=1 	if scian==13	// Servicios Corporativos		 
-			replace education=1 	if scian==15	// Servicios educativos		 
-			replace health=1 		if scian==16	// Servicios de salud y de asistencia social			 
-			replace hotel_rest=1 	if scian==18	// Servicios de hospedaje y de preparación de alimentos y bebidas		 
-			replace government=1 	if scian==20	// Actividades gubernamentales y de organismos internacionales		 
-			replace clerical=1 		if c_ocu11c==4 	// Clerical jobs		  
-
+			replace industry=1		if P4A_Sector==2	// 2 = Working in industry
+			replace food=1 			if P4A==3110 		// 3110 Industria alimentaria 	 			
+			replace autoparts=1 	if P4A==3360 		// 3360 Fabricar equipo de transporte y autopartes	 		
+			replace clothing=1 		if P4A==3150 		// 3150 Fabricar prendas de vestir 			 
+			replace textile=1 		if P4A==3140 		// 3140 Fabricar productos textiles, excepto prendas de vestir			 
+			replace computers=1 	if P4A==3340 		// 3340 Fabricar equipo de computo, componentes y accesorios electrónicos		 
+			replace appliances=1 	if P4A==3350 		// 3350 Fabricar aparatos eléctricos, equipo para generación de energía eléctrica, accesorios 			 
+			replace construction=1 	if scian==4 		// Construction			 
+			replace real_estate=1 	if scian==11 		// Servicios inmobiliarios y de alquiler de bienes 	
+			replace retail=1 		if scian==7 		// Comercio al por menor		 
+			replace media=1 		if scian==9 		// Información en medios masivos		 
+			replace finance=1 		if scian==10		// Servicios financieros y de seguros			 
+			replace corporative=1 	if scian==13		// Servicios Corporativos		 
+			replace education=1 	if scian==15		// Servicios educativos		 
+			replace health=1 		if scian==16		// Servicios de salud y de asistencia social			 
+			replace hotel_rest=1 	if scian==18		// Servicios de hospedaje y de preparación de alimentos y bebidas		 
+			replace government=1 	if scian==20		// Actividades gubernamentales y de organismos internacionales		 
+			replace clerical=1 		if c_ocu11c==4 		// Clerical jobs		  
+			replace domestic_emp=1	if P4A==8140		// 8140 Hogares con empleados domésticos
 			
+			// Source of P4A codes: 
+			// https://www.inegi.org.mx/contenidos/programas/enoe/15ymas/doc/clasificaciones_enoe.pdf
 
 save	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta", replace  	
 			
 			
 			
+// Variable para estimar las horas trabajadas promedio en distintas actividades dentro del sector servicios 
+
 					
 			
 
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			

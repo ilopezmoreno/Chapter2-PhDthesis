@@ -8,20 +8,23 @@ cd "${root}/4_outputs/regression_results"
 capture mkdir probit_industry_activities
 
 
-local dep_variable ///
-food 			/// INDUSTRY
-autoparts 		/// INDUSTRY
-clothing 		/// INDUSTRY
-textile 		/// INDUSTRY
-computers 		/// INDUSTRY
-appliances 		/// INDUSTRY
-construction 	// INDUSTRY
+local dep_variable 	///
+industry			///
+food 				/// 
+autoparts 			/// 
+clothing 			/// 
+textile 			/// 
+computers 			/// 
+appliances 			/// 
+construction 		// 	
 
 
 
 foreach dependent_variable of local dep_variable {	
 
 cd "${root}/4_outputs/regression_results/probit_industry_activities"
+
+/*
 
 // Without control variables 
 probit `dependent_variable' ///   
@@ -35,6 +38,7 @@ outreg2 using 	nocontrol_probit_ind_activities_116_419.xls, label dec(4)
 outreg2 using 	nocontrol_probit_ind_activities_116_419.doc, label // Save regression results in word format
 estimates save 	nocontrol_probit_ind_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
 
+*/
 
 // With control variables 
 probit `dependent_variable' ///   
@@ -50,11 +54,12 @@ ib(1).per /// Year fixed effects to control for unobserved heterogeneity across 
 if female==1 & working_age==2 /// Regression restricted only to working_age women in the sample. 
 [pweight=fac], /// Probability weights 
 vce (robust) // Robust standard errors. 
-outreg2 using 	control_probit_ind_activities_116_419.xls, label dec(4)
-outreg2 using 	control_probit_ind_activities_116_419.doc, label // Save regression results in word format
-estimates save 	control_probit_ind_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
+outreg2 using 	control_probit_industry_activities_116_419.xls, label dec(4)
+outreg2 using 	control_probit_industry_activities_116_419.doc, label // Save regression results in word format
+estimates save 	control_probit_industry_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
 
 
+/*
 
 // With control variables and interaction marital_status and age
 probit `dependent_variable' ///   
@@ -73,5 +78,7 @@ vce (robust) // Robust standard errors.
 outreg2 using 	interaction_probit_ind_activities_116_419.xls, label dec(4)
 outreg2 using 	interaction_probit_ind_activities_116_419.doc, label // Save regression results in word format
 estimates save 	interaction_probit_ind_activities_116_419_`dependent_variable'.ster, replace // Save regression results in .ster format
+
+*/
 
 }
