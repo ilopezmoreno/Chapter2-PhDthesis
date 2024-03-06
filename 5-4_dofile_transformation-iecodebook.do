@@ -1,8 +1,6 @@
 clear 
 global root "C:/Users/d57917il/Documents/GitHub/Chapter2-PhDthesis"
 
-
-
 /* 
 
 iecodebook is a command from the Stata package "iefieldkit" created by DIME Analytics
@@ -37,7 +35,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta"
 	the iecodebook.xlsx that I already did. 
 */
 		// De-activated for reproducibility purposes. 
-		* iecodebook template using "${root}/iecodebook_chapter2_v2.xlsx", replace 
+		 iecodebook template using "${root}/iecodebook_chapter2_v3.xlsx", replace 
 		// De-activated for reproducibility purposes. 
 		
 		

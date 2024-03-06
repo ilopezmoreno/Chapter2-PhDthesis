@@ -117,12 +117,12 @@ fre t_loc
 	mh_fil2     	///
 	sec_ins     	///
 	n_inf       	///
-	p1          	///
+	p1 				///
 	p1a1        	///
 	p1a2        	///
 	p1a3        	///
 	p1b         	///
-	p1c         	///
+	p1c				///
 	p1d         	///
 	p1e         	///
 	p2_1        	///

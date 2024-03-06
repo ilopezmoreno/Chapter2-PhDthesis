@@ -7,42 +7,16 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-drop.dta"
 ***** Data Transformation Process *****
 ***************************************
 
-/*
 
 
 
 
-// MISSING VALUE DECISIONS 
-			replace ingocup=. if ingocup==0 // If monthly income "ingocup" is equal to 0, make it a missing value. 
-			// (764,184 real changes made, 764,184 to missing)
 
 
 
-// RE LABELING VARIABLES  
-			label define e_con 1 "Free Union", modify
-			label define e_con 2 "Separated", modify
-			label define e_con 3 "Divorced", modify
-			label define e_con 4 "Widowed", modify
-			label define e_con 5 "Married", modify
-			label define e_con 6 "Single", modify
-			
-			label define ur 0 "Rural", modify
-			label define ur 1 "Urban", modify
-			
-			label define t_loc 1 "More than 100,000", modify
-			label define t_loc 2 "Between 15,000 and 99,999", modify
-			label define t_loc 3 "Between 2,500 and 14,999", modify
-			label define t_loc 4 "Less than 2,500", modify
 
 
-			
-// REPLACING VARIABLE VALUES 
-			replace per=1 if per==116 // 1st quarter of 2016 
-			replace per=2 if per==217 // 2nd quarter of 2017
-			replace per=3 if per==318 // 3rd quarter of 2018
-			replace per=4 if per==419 // 4th quarter of 2019			
-			
-*/
+
 
 // GENERATE NEW VARIABLES
 
