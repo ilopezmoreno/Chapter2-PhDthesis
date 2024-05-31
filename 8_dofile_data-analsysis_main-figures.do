@@ -20,10 +20,61 @@ clear
 use "C:/Users/d57917il/Documents/GitHub/Chapter2-PhDthesis/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-iecodebook.dta"	
 
 
+// FIGURE: Sectoral composition of employment in Mexico. (Industry and manufacturing dissagregated)
+
+* 1st part of the figure: Sectoral distribution of employment in 2019
+tab P4A_Sector if per==4 [fweight=fac]
+/*
+Economic sector of |
+ the company where |
+   you are working |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+    Primary Sector |  6,939,778       12.44       12.44
+  Secondary Sector | 13,864,577       24.85       37.28
+   Terciary Sector | 34,667,375       62.13       99.41
+Unspecified Sector |    329,350        0.59      100.00
+-------------------+-----------------------------------
+             Total | 55,801,080      100.00          */
+
+* 2nd part of the figure: Composition of industrial activities
+tab scian if P4A_Sector==2 & per==4 [fweight=fac]
+/*
+ Economic activities (SCIAN categories) |      Freq.     Percent        Cum.
+----------------------------------------+-----------------------------------
+                                Minería |    181,270        1.31        1.31
+Generación y distribución de electricid |    200,342        1.44        2.75
+                           Construcción |  4,231,602       30.52       33.27
+              Industrias manufactureras |  9,251,363       66.73      100.00
+----------------------------------------+-----------------------------------
+                                  Total | 13,864,577      100.00         */
+
+* 3rd part of the figure: Composition of the manufacturing sector
+tab cat_scian_50 if scian==5 & per==4 [fweight=fac]							  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+
+
 // Figure 1: Percentage of women with different marital status each year/quarter.
 
+tab e_con if female==1 & eda>=18 & eda<=65 & per==1 [fweight=fac]	
+tab e_con if female==1 & eda>=18 & eda<=65 & per==2 [fweight=fac]	
+tab e_con if female==1 & eda>=18 & eda<=65 & per==3 [fweight=fac]	
+tab e_con if female==1 & eda>=18 & eda<=65 & per==4 [fweight=fac]	
 
 
+
+
+// Figure: Del total de mujeres trabajando en el sector industrial, cuales son los sectores donde mas trabajan?
+
+tab cat_scian_50 if P4A_Sector==2 & female==1 & eda>=18 & eda<=65 & per==4 [fweight=fac]	
 
 
 

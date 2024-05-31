@@ -48,11 +48,9 @@ fre t_loc
 	drop 			///
 	r_def 			///
 	loc				///
-	est_d			///
 	ageb			///
 	cd_a    		///
 	con     		///
-	upm     		///
 	d_sem			///
 	n_pro_viv   	///
 	v_sel       	///
@@ -152,10 +150,8 @@ fre t_loc
 	p2d10       	///
 	p2d11       	///
 	p2d99       	///
-	p2e         	///
 	p2f         	///
 	p2g1        	///
-	p2g2        	///
 	p2h1        	///
 	p2h2        	///
 	p2h3        	///
@@ -249,7 +245,6 @@ fre t_loc
 	p5c_thrs    	///
 	p5c_tdia    	///
 	p5d         	///
-	p5e1        	///
 	p5e_hlu     	///
 	p5e_mlu     	///
 	p5e_hma     	///

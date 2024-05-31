@@ -23,7 +23,7 @@ https://www.youtube.com/watch?v=zm6eoMU09dA&t=1174s
 
 */
 
-use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta" 
+use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-tidy.dta" 
 
 
 /* 	The following line of code is used to generate the excel file "iecodebook"
@@ -35,7 +35,7 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta"
 	the iecodebook.xlsx that I already did. 
 */
 		// De-activated for reproducibility purposes. 
-		 iecodebook template using "${root}/iecodebook_chapter2_v3.xlsx", replace 
+		 iecodebook template using "${root}/iecodebook_chapter2_v6.xlsx", replace 
 		// De-activated for reproducibility purposes. 
 		
 		
@@ -45,13 +45,8 @@ use	"${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-const.dta"
 	using stata rather than using iecodebook. 
 	I will use the iecodebook only to re-label and re-code variables. */ 
 	
-	
-	
-iecodebook apply using "${root}/iecodebook_chapter2_v2.xlsx", replace // This is the code that asks stata to apply my iecodebook to my dataset.	
-	
-	
-	
+		
+iecodebook apply using "${root}/iecodebook_chapter2_v6.xlsx", replace // This is the code that asks stata to apply my iecodebook to my dataset.	
+
 	
 save "${root}/2_data-storage/pool_dataset/pool_enoe_116_217_318_419-iecodebook.dta", replace 	
-
-

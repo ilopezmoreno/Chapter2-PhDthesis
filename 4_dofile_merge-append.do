@@ -113,11 +113,6 @@ use SDEMT`year_q' // Always use the SDEM dataset for each quarter as a reference
 
 
 
-
-
-
-
-
 // APPEND PROCESS 
 // Now that the datasets are merged, I will append them all to create a unique pool dataset.  
 
